@@ -1,12 +1,19 @@
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { formatter } from "@/utils/utils";
 import { ImPriceTag } from "react-icons/im";
 import { AiFillStar, AiOutlineShoppingCart } from "react-icons/ai";
 import axios from "axios";
+import { CartContext } from "@/context/cart/CartContext";
 
 const EventsCards = () => {
 	const [products, setproducts] = useState([]);
+	const { addToCart, cart } = useContext(CartContext);
+
+	const handleAddToCart = (product) => {
+		console.log("Adding to cart");
+		addToCart(product);
+	};
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -69,12 +76,27 @@ const EventsCards = () => {
 								</p>
 							</div>
 
-							<div className='text-[#372AA4]'>
-								<button className=' flex items-center justify-between gap-2 text-sm border-2 border-[#372AA4] py-1 px-3 rounded-[8px]'>
-									<AiOutlineShoppingCart />
-									Cart
-								</button>
-							</div>
+							{cart.find((item) => item.id === product.id) ? (
+								<div className='text-[#372AA4]'>
+									<button
+										disabled
+										onClick={() => handleAddToCart(product)}
+										className=' flex items-center justify-between bg-slate-400 gap-2 text-sm  border-[#372AA4] py-1 px-3 rounded-[8px]'>
+										<AiOutlineShoppingCart />
+										Cart
+									</button>
+								</div>
+							) : (
+								<div className='text-[#372AA4]'>
+									<button
+										// disabled
+										onClick={() => handleAddToCart(product)}
+										className=' flex items-center justify-between gap-2 text-sm border-2 border-[#372AA4] hover:bg-[#372AA4] hover:text-[#ffffff] py-1 px-3 rounded-[8px]'>
+										<AiOutlineShoppingCart />
+										Cart
+									</button>
+								</div>
+							)}
 						</div>
 					</div>
 				);

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 // import { CiLocationOn } from "react-icons/ci";
 import { BsCalendar3 } from "react-icons/bs";
 import { TiFlashOutline } from "react-icons/ti";
@@ -7,9 +7,15 @@ import { formatter } from "@/utils/utils";
 import { ImPriceTag } from "react-icons/im";
 import { AiFillStar, AiOutlineShoppingCart } from "react-icons/ai";
 import axios from "axios";
+import { CartContext } from "@/context/cart/CartContext";
 
 const HeroCard = () => {
 	const [products, setproducts] = useState([]);
+	const { cart, addToCart } = useContext(CartContext);
+	const handleAddToCart = (product) => {
+		console.log("Adding to cart");
+		addToCart(product);
+	};
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -67,10 +73,31 @@ const HeroCard = () => {
 								{/* <button className='border-2 border-[#372AA4] py-2 px-6 rounded-[8px]'>
 									Buy Ticket
 								</button> */}
-								<button className=' flex items-center justify-between gap-2 text-xl border-2 border-[#372AA4] py-2 px-6 rounded-[8px]'>
+								{/* <button className=' flex items-center justify-between gap-2 text-xl border-2 border-[#372AA4] py-2 px-6 rounded-[8px]'>
 									<AiOutlineShoppingCart className='w-[24px] h-[24px]' />
 									Cart
-								</button>
+								</button> */}
+								{cart.find((item) => item.id === product.id) ? (
+									<div className='text-[#372AA4]'>
+										<button
+											disabled
+											onClick={() => handleAddToCart(product)}
+											className=' flex items-center justify-between bg-slate-400 gap-2 text-xl  border-[#372AA4] py-2 px-6 rounded-[8px]'>
+											<AiOutlineShoppingCart />
+											Cart
+										</button>
+									</div>
+								) : (
+									<div className='text-[#372AA4]'>
+										<button
+											// disabled
+											onClick={() => handleAddToCart(product)}
+											className=' flex items-center justify-between gap-2 text-xl border-2 border-[#372AA4] py-2 px-6 hover:bg-[#372AA4] hover:text-[#ffffff] rounded-[8px]'>
+											<AiOutlineShoppingCart />
+											Cart
+										</button>
+									</div>
+								)}
 							</div>
 						</div>
 					</div>
