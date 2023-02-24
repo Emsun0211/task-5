@@ -39,7 +39,7 @@ const HeroCard = () => {
 					/* // console.log(product); */
 				}
 				return (
-					<div className='mt-8 w-[540px] h-[350px] bg-white rounded-[8px] border-[#FFFFFF] p-5'>
+					<div className='mt-8 w-[90%] h-[350px]  bg-white rounded-[8px] border-[#FFFFFF] p-5'>
 						<div className='hero-img-div mb-5'>
 							<img src={product.image} className='img-style' />
 						</div>
@@ -70,13 +70,6 @@ const HeroCard = () => {
 								</div>
 							</div>
 							<div className='text-[#372AA4]'>
-								{/* <button className='border-2 border-[#372AA4] py-2 px-6 rounded-[8px]'>
-									Buy Ticket
-								</button> */}
-								{/* <button className=' flex items-center justify-between gap-2 text-xl border-2 border-[#372AA4] py-2 px-6 rounded-[8px]'>
-									<AiOutlineShoppingCart className='w-[24px] h-[24px]' />
-									Cart
-								</button> */}
 								{cart.find((item) => item.id === product.id) ? (
 									<div className='text-[#372AA4]'>
 										<button

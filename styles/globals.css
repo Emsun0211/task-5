@@ -9,6 +9,7 @@
 
 body {
 	background-color: #f8f9fb;
+	overflow-x: hidden;
 }
 
 .img-div {
