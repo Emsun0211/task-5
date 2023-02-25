@@ -20,7 +20,7 @@ const Navbar = () => {
 						href={"/"}
 						className=' text-sm  flex items-center justify-between gap-3'>
 						<Image src={"/userimg.png"} width={40} height={40} />
-						<p className='font-bold text-xl'>Bernice</p>
+						<p className='font-bold text-[1rem] sm:text-xl'>Bernice</p>
 					</Link>
 					<div className=' flex items-center justify-center text-center bg-[#EAEDF7] border-2 rounded-[8px] w-[40px] h-[30px] relative'>
 						{cart.length ? (
@@ -36,7 +36,7 @@ const Navbar = () => {
 			</div>
 			<div className='relative'>
 				<input
-					className='border-[#EAEDF7] border-2 w-96 py-2 px-10 rounded-[8px] '
+					className='border-[#EAEDF7] border-2 sm:w-96 w-[100%] py-2 px-10 rounded-[8px] '
 					type='text'
 					placeholder='search'></input>
 				<CiSearch className='absolute top-3 left-5 w-[20px] h-[20px]' />

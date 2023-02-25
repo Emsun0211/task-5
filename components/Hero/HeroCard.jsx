@@ -6,6 +6,7 @@ import { TiFlashOutline } from "react-icons/ti";
 import { formatter } from "@/utils/utils";
 import { ImPriceTag } from "react-icons/im";
 import { AiFillStar, AiOutlineShoppingCart } from "react-icons/ai";
+import { RiCouponLine } from "react-icons/ri";
 import axios from "axios";
 import { CartContext } from "@/context/cart/CartContext";
 
@@ -54,9 +55,9 @@ const HeroCard = () => {
 										<p>{formatter.format(product.price)}</p>
 									</div>
 
-									<div className='flex  items-center gap-3'>
-										<BsCalendar3 />
-										<p></p>
+									<div className='hidden sm:flex  items-center gap-3'>
+										<RiCouponLine />
+										<p>Get 40% off your first order</p>
 									</div>
 								</div>
 								<div className='flex justify-left items-center gap-3'>
