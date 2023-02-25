@@ -55,7 +55,7 @@ const HeroCard = () => {
 										<p>{formatter.format(product.price)}</p>
 									</div>
 
-									<div className='hidden sm:flex  items-center gap-3'>
+									<div className='hidden md:hidden sm:flex  items-center gap-3'>
 										<RiCouponLine />
 										<p>Get 40% off your first order</p>
 									</div>
